@@ -50,24 +50,7 @@
     <md-content flex layout="row">
         <collection></collection>
         <md-content flex layout="column">
-            <mdt-table ng-controller="EditorController as vm" save-row-callback="vm.saveRow(row)" ng-if="vm.showTable">
-                <mdt-header-row>
-                    <mdt-column align-rule="left">Artist</mdt-column>
-                    <mdt-column>Title</mdt-column>
-                    <mdt-column>Rating</mdt-column>
-                </mdt-header-row>
-                <mdt-row>
-                    <mdt-cell editable-field="smallEditDialog">
-                        {{vm.editedMetadata.artist}}
-                    </mdt-cell>
-                    <mdt-cell editable-field="smallEditDialog">
-                        {{vm.editedMetadata.title}}
-                    </mdt-cell>
-                    <mdt-cell editable-field="smallEditDialog">
-                        {{vm.editedMetadata.rating}}
-                    </mdt-cell>
-                </mdt-row>
-            </mdt-table>
+            <metadata-editor></metadata-editor>
             <span flex></span>
             <music-player></music-player>
         </md-content>
@@ -86,11 +69,11 @@
     <script src="./node_modules/md-data-table/dist/md-data-table.js"></script>
     <script src="./client/js/app.js"></script>
     <script src="./client/js/scanner.controller.js"></script>
-    <script src="./client/js/editor.controller.js"></script>
     <script src="./client/js/superfilter.factory.js"></script>
     <script src="./client/js/audio-player.factory.js"></script>
     <script src="./client/js/collection.directive.js"></script>
     <script src="./client/js/artist-collection.directive.js"></script>
+    <script src="./client/js/metadata-editor.directive.js"></script>
     <script src="./client/js/music-player.directive.js"></script>
     <script src="./client/js/track.directive.js"></script>
 </body>

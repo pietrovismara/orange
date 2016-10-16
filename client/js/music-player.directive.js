@@ -14,7 +14,7 @@ function musicPlayerDirective(audioPlayer) {
         var vm = this;
         vm.playingIndex = 0;
         vm.playlist = [];
-        vm.playingTrack = {};
+        vm.playingTrack = null;
         vm.play = play;
         vm.stop = stop;
         vm.pause = pause;

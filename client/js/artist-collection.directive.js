@@ -23,6 +23,9 @@
             }
 
             function editTrack(track) {
+                track = _.find(vm.tracks, (_track) => {
+                    return _track.id === track.id;
+                });
                 audioPlayer.addToPlaylist(track);
                 collection.edit(track.id);
             }
