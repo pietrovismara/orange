@@ -1,0 +1,8 @@
+<p ng-click="vm.toggleTracks()">{{vm.artist}}</p>
+<ul ng-if="vm.showTracks">
+    <li ng-repeat="track in vm.tracks">
+        <div class="md-list-item-text" layout="column" ng-click="vm.editTrack(track)">
+            <p>{{track.artist}} - {{track.title}}</p>
+        </div>
+    </li>
+</ul>

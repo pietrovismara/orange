@@ -1,0 +1,36 @@
+{
+  "name": "music-browser",
+  "version": "0.0.1",
+  "description": "Music files browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG=ppv:* ./node_modules/electron-prebuilt/cli.js ."
+  },
+  "author": "Pietro Paolo Vismara",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-material": "^1.1.1",
+    "angular-material-icons": "^0.7.1",
+    "angular-sanitize": "^1.5.8",
+    "base-path": "^1.0.1",
+    "bluebird": "^3.4.6",
+    "debug": "^2.2.0",
+    "electron": "^1.4.3",
+    "electron-prebuilt": "^1.4.3",
+    "eventemitter3": "^2.0.2",
+    "jquery": "^3.1.1",
+    "knex": "^0.12.5",
+    "lodash": "^4.16.3",
+    "md-data-table": "https://github.com/iamisti/mdDataTable.git",
+    "musicmetadata": "^2.0.4",
+    "recursive-readdir": "^2.1.0",
+    "sqlite3": "^3.1.6"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.2.1"
+  }
+}
