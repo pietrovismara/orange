@@ -1,7 +1,7 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
         <span ng-if="player.playingTrack.title">
-            <h5>{{player.playingTrack.artist}} - {{player.playingTrack.title}}</h5>
+            <track data="player.playingTrack"></track>
         </span>
         <span flex></span>
         <md-button class="md-raised md-icon-button" ng-disabled="!player.canPrev()" ng-click="player.prev()" aria-label="Previous">
@@ -20,8 +20,6 @@
             <md-icon md-font-set="material-icons">skip_next</md-icon>
         </md-button>
         <span flex></span>
-        <span ng-if="player.playingTrack.title">
-            <h5>{{player.playingTrack.artist}} - {{player.playingTrack.title}}</h5>
-        </span>
+        <track data="player.playingTrack"></track>
     </div>
 </md-toolbar>

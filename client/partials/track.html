@@ -1,3 +1,7 @@
 <div class="md-list-item-text" layout="column" ng-click="vm.editTrack">
-    <p>{{vm.track.artist}} - {{vm.track.title}}</p>
+    <p>
+        <span ng-repeat="artist in vm.track.artist" ng-if="$index === 0">{{artist}}</span>
+        <span ng-repeat="artist in vm.track.artist" ng-if="$index > 0">,{{artist}}</span>
+        - {{vm.track.title}}
+    </p>
 </div>

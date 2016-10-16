@@ -7,7 +7,7 @@
             var vm = this;
 
             $scope.$watch('data', init);
-
+            init();
             function init() {
                 vm.track = $scope.data;
             }

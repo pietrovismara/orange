@@ -7,6 +7,7 @@
         var factory = {
             play: play,
             stop: stop,
+            pause: pause,
             addToPlaylist: addToPlaylist,
             isPlaying: isPlaying
         };
@@ -27,6 +28,12 @@
         function stop() {
             if (isPlaying()) {
                 player.stop();
+            }
+        }
+
+        function pause() {
+            if (isPlaying()) {
+                player.pause();
             }
         }
 
