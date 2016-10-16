@@ -1,25 +1,37 @@
 (function() {
-    angular.module('orange')
-    .controller('ScannerController', ScannerController);
+angular.module('orange')
+.directive('collection', collectionDirective);
 
-    function ScannerController($scope, scanner, collection, dialog) {
+function collectionDirective(superFilter, collection, scanner) {
+    return {
+        restrict: 'E',
+        replace: true,
+        controller: controller,
+        controllerAs: 'ctrl',
+        templateUrl: 'client/partials/collection.html'
+    };
+
+    function controller($scope) {
         var vm = this;
-        vm.scanDirRec = scanDirRec;
-        vm.scanDir = scanDir;
-        vm.scanFile = scanFile;
-        vm.searchBy = searchBy;
+        vm.collection = {};
+        vm.activeFilters = {
+            groupBy: false,
+            searchBy: false
+        };
+
+        vm.searchKey = "";
         vm.groupBy = groupBy;
+        vm.searchBy = searchBy;
         vm.filter = filter;
         vm.scanning = true;
 
-        collection.isReady()
+        collection.loadCollection()
         .then(() => {
             init();
-            onScanData();
         });
 
         function init() {
-            vm.scanning = false;
+            superFilter.init();
             setListeners();
             onScanData();
         }
@@ -40,8 +52,14 @@
             scanner.removeListeners('scan.start', onScanStart);
         }
 
+
         function onScanData() {
+            vm.collection = collection.getCollection();
+            // console.log("scan data: ", vm.collection);
             vm.collectionSize = collection.size();
+            groupBy('artist');
+            console.log("scan data: ", vm.collection);
+            filter();
             $scope.$digest();
         }
 
@@ -83,47 +101,7 @@
             _.assign(vm.checkBoxes, vm.activeFilters);
             vm.collection = superFilter.exec();
         }
-
-        function scan(path, recursive) {
-            scanner.scan(path, recursive)
-            .then(() => {
-                console.log('scan complete');
-            });
-        }
-
-        function scanDir() {
-            var path = dialog.showOpenDialog({
-                properties: ['openDirectory']
-            });
-            if (path) {
-                scan(path[0]);
-            }
-        }
-
-        function scanDirRec() {
-            var path = dialog.showOpenDialog({
-                properties: ['openDirectory']
-            });
-
-            if (path) {
-                scan(path[0], true);
-            }
-        }
-
-        function scanFile() {
-            var path = dialog.showOpenDialog({
-                properties: ['openFile'],
-                filters: [{
-                    name: 'Audio Files',
-                    extensions: ['wav', 'mp3', 'flac', 'ogg']
-                }]
-            });
-
-            if (path) {
-                scan(path[0]);
-            }
-        }
-
-
     }
+}
+
 })();

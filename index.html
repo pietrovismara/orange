@@ -14,7 +14,7 @@
     </style>
 </head>
 
-<body ng-app="scannerApp" ng-cloak style="display: flex; flex-direction: column;">
+<body ng-app="orange" ng-cloak style="display: flex; flex-direction: column;">
     <md-toolbar ng-controller="ScannerController as vm" class="md-toolbar-tools">
         <div class="md-toolbar-tools">
             <h5>
@@ -29,7 +29,7 @@
             </h2>
             <span flex></span>
             <md-menu>
-                <md-button class="md-raised" ng-click="$mdOpenMenu($event)">
+                <md-button class="md-raised md-accent" ng-click="$mdOpenMenu($event)">
                     Scanner
                 </md-button>
                 <md-menu-content width="4">
@@ -47,20 +47,10 @@
             </md-menu>
         </div>
     </md-toolbar>
-    <md-content flex layout="row" ng-controller="CollectionController as vm">
-        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" md-whiteframe="4" style="max-height: 100%; overflow-y: auto;">
-            <md-input-container style="max-width: 95%;">
-                <label>Search</label>
-                <input type="text" ng-model="vm.searchKey" ng-model-options="{debounce: 250}" ng-change="vm.searchBy()"></input>
-            </md-input-container>
-            <md-content layout-padding>
-                <artist-collection ng-repeat="(artist, tracks) in vm.collection" artist="artist" tracks="tracks"></artist-collection>
-            </md-content>
-        </md-sidenav>
-        <md-content ng-controller="EditorController as vm" flex>
-            <mdt-table
-                save-row-callback="vm.saveRow(row)"
-                ng-if="vm.showTable">
+    <md-content flex layout="row">
+        <collection></collection>
+        <md-content flex layout="column">
+            <mdt-table ng-controller="EditorController as vm" save-row-callback="vm.saveRow(row)" ng-if="vm.showTable">
                 <mdt-header-row>
                     <mdt-column align-rule="left">Artist</mdt-column>
                     <mdt-column>Title</mdt-column>
@@ -78,9 +68,13 @@
                     </mdt-cell>
                 </mdt-row>
             </mdt-table>
+            <span flex></span>
+            <music-player></music-player>
         </md-content>
     </md-content>
+    <script src="./client/js/aurora.js"></script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/eventemitter3/index.js"></script>
     <script src="./node_modules/lodash/lodash.min.js"></script>
     <script src="./node_modules/angular/angular.js"></script>
     <script src="./node_modules/angular-sanitize/angular-sanitize.js"></script>
@@ -92,10 +86,12 @@
     <script src="./node_modules/md-data-table/dist/md-data-table.js"></script>
     <script src="./client/js/app.js"></script>
     <script src="./client/js/scanner.controller.js"></script>
-    <script src="./client/js/collection.controller.js"></script>
     <script src="./client/js/editor.controller.js"></script>
     <script src="./client/js/superfilter.factory.js"></script>
-    <script src="./client/js/artist_collection.directive.js"></script>
+    <script src="./client/js/audio-player.factory.js"></script>
+    <script src="./client/js/collection.directive.js"></script>
+    <script src="./client/js/artist-collection.directive.js"></script>
+    <script src="./client/js/music-player.directive.js"></script>
     <script src="./client/js/track.directive.js"></script>
 </body>
 

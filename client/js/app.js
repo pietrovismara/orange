@@ -6,7 +6,7 @@ const collection = remote.require(`${basePath()}/lib/collection`);
 const scanner = remote.require(`${basePath()}/lib/scanner`);
 remote.getCurrentWindow().removeAllListeners();
 
-angular.module('scannerApp', ['ngMaterial', 'mdDataTable', 'ngMdIcons', 'ngSanitize'])
+angular.module('orange', ['ngMaterial', 'mdDataTable', 'ngMdIcons', 'ngSanitize'])
 .factory('collection', function() {
     return collection;
 })
@@ -16,10 +16,15 @@ angular.module('scannerApp', ['ngMaterial', 'mdDataTable', 'ngMdIcons', 'ngSanit
 .factory('dialog', function() {
     return dialog;
 })
+.factory('AV', function() {
+    var AV = window.AV;
+    delete window.AV;
+    return AV;
+})
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('orange')
-    .accentPalette('red');
+    .accentPalette('deep-orange');
 });
 
 })();

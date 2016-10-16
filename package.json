@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "DEBUG=orange:* ./node_modules/electron-prebuilt/cli.js ."
+    "start": "DEBUG=orange:* ./node_modules/electron-prebuilt/cli.js .",
+    "bundle": "browserify --standalone AV bundles/aurora.js -o client/js/aurora.js"
   },
   "author": "Pietro Paolo Vismara",
   "license": "ISC",
@@ -16,19 +17,25 @@
     "angular-material": "^1.1.1",
     "angular-material-icons": "^0.7.1",
     "angular-sanitize": "^1.5.8",
+    "av": "^0.4.9",
     "base-path": "^1.0.1",
     "bluebird": "^3.4.6",
     "debug": "^2.2.0",
     "electron": "^1.4.3",
     "electron-prebuilt": "^1.4.3",
     "eventemitter3": "^2.0.2",
+    "express": "^4.14.0",
+    "flac.js": "^0.2.1",
     "jquery": "^3.1.1",
     "knex": "^0.12.5",
     "lodash": "^4.16.3",
     "md-data-table": "https://github.com/iamisti/mdDataTable.git",
+    "mp3.js": "^0.2.0",
     "musicmetadata": "^2.0.4",
+    "ogg.js": "^0.1.0",
     "recursive-readdir": "^2.1.0",
-    "sqlite3": "^3.1.6"
+    "sqlite3": "^3.1.6",
+    "wav": "^1.0.1"
   },
   "devDependencies": {
     "electron-rebuild": "^1.2.1"

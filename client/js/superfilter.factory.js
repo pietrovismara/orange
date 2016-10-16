@@ -1,5 +1,5 @@
 (function() {
-    angular.module('scannerApp')
+    angular.module('orange')
     .factory('superFilter', superFilterFactory);
 
     function superFilterFactory(collection) {

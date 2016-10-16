@@ -1,8 +1,8 @@
 (function() {
-    angular.module('scannerApp')
+    angular.module('orange')
     .directive('artistCollection', artistCollectionDirective);
 
-    function artistCollectionDirective(collection) {
+    function artistCollectionDirective(audioPlayer, collection) {
         var ctrl = function($scope, $element, $attrs) {
             var vm = this;
             vm.showTracks = false;
@@ -23,6 +23,7 @@
             }
 
             function editTrack(track) {
+                audioPlayer.addToPlaylist(track);
                 collection.edit(track.id);
             }
         };

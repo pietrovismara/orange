@@ -1,14 +1,16 @@
 (function() {
-    angular.module('scannerApp')
+    angular.module('orange')
     .directive('track', trackDirective);
 
     function trackDirective() {
         var ctrl = function($scope, $element, $attrs) {
             var vm = this;
 
-            init();
+            $scope.$watch('data', init);
+
             function init() {
                 vm.track = $scope.data;
+                console.log(vm.track);
             }
         };
 

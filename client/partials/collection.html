@@ -1,0 +1,9 @@
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" md-whiteframe="4" style="max-height: 100%; overflow-y: auto;">
+    <md-input-container style="max-width: 95%;">
+        <label>Search</label>
+        <input type="text" ng-model="ctrl.searchKey" ng-model-options="{debounce: 250}" ng-change="ctrl.searchBy()"></input>
+    </md-input-container>
+    <md-content layout-padding>
+        <artist-collection ng-repeat="(artist, tracks) in ctrl.collection" artist="artist" tracks="tracks"></artist-collection>
+    </md-content>
+</md-sidenav>

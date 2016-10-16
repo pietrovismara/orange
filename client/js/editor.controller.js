@@ -1,5 +1,5 @@
 (function() {
-    angular.module('scannerApp')
+    angular.module('orange')
     .controller('EditorController', EditorController);
 
     function EditorController($scope, collection) {

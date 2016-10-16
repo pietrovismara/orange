@@ -1,0 +1,27 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span ng-if="player.playingTrack.title">
+            <h5>{{player.playingTrack.artist}} - {{player.playingTrack.title}}</h5>
+        </span>
+        <span flex></span>
+        <md-button class="md-raised md-icon-button" ng-disabled="!player.canPrev()" ng-click="player.prev()" aria-label="Previous">
+            <md-icon md-font-set="material-icons">skip_previous</md-icon>
+        </md-button>
+        <md-button ng-if="!player.isPlaying()" ng-click="player.play()" class="md-fab" aria-label="Play">
+            <md-icon md-font-set="material-icons">play_arrow</md-icon>
+        </md-button>
+        <md-button ng-if="player.isPlaying()" ng-click="player.pause()" class="md-fab" aria-label="Pause">
+            <md-icon md-font-set="material-icons">pause</md-icon>
+        </md-button>
+        <!-- <md-button class="md-raised md-icon-button" aria-label="Stop">
+            <md-icon md-font-set="material-icons">stop</md-icon>
+        </md-button> -->
+        <md-button class="md-raised md-icon-button" ng-disabled="!player.canNext()" ng-click="player.next()" aria-label="Next">
+            <md-icon md-font-set="material-icons">skip_next</md-icon>
+        </md-button>
+        <span flex></span>
+        <span ng-if="player.playingTrack.title">
+            <h5>{{player.playingTrack.artist}} - {{player.playingTrack.title}}</h5>
+        </span>
+    </div>
+</md-toolbar>
