@@ -20,7 +20,7 @@ function CollectionController($scope, superFilter, collection, scanner) {
         init();
     });
 
-    function init() {        
+    function init() {
         superFilter.init();
         setListeners();
         onScanData();
@@ -45,7 +45,6 @@ function CollectionController($scope, superFilter, collection, scanner) {
     function onScanData() {
         vm.collection = collection.getCollection();
         vm.collectionSize = collection.size();
-        console.log(vm.collection, collection.size());
         groupBy('artist');
         filter();
         $scope.$digest();

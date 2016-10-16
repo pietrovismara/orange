@@ -34,7 +34,6 @@
             vm.showTable = false;
             $scope.$digest();
             vm.editedMetadata = metadata;
-            console.log('onMetadataEdit', vm.editedMetadata);
             let temp = "";
             _.forEach(vm.editedMetadata.artist, (artist, i) => {
                 temp += `${artist}`;

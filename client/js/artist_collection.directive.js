@@ -21,7 +21,6 @@
             }
 
             function editTrack(track) {
-                console.log('editTrack', track, collection.edit);
                 collection.edit(track.id);
             }
         };
