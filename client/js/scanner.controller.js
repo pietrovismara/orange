@@ -2,7 +2,7 @@
     angular.module('scannerApp')
     .controller('ScannerController', ScannerController);
 
-    function ScannerController($scope, $timeout, scanner, collection, dialog) {
+    function ScannerController($scope, scanner, collection, dialog) {
         var vm = this;
         vm.scanDirRec = scanDirRec;
         vm.scanDir = scanDir;
@@ -20,6 +20,7 @@
 
         function init() {
             vm.scanning = false;
+            setListeners();
             onScanData();
         }
 
@@ -94,8 +95,9 @@
             var path = dialog.showOpenDialog({
                 properties: ['openDirectory']
             });
-
-            scan(path[0]);
+            if (path) {
+                scan(path[0]);
+            }
         }
 
         function scanDirRec() {
@@ -103,7 +105,9 @@
                 properties: ['openDirectory']
             });
 
-            scan(path[0], true);
+            if (path) {
+                scan(path[0], true);
+            }
         }
 
         function scanFile() {
@@ -114,7 +118,10 @@
                     extensions: ['wav', 'mp3', 'flac', 'ogg']
                 }]
             });
-            scan(path[0]);
+
+            if (path) {
+                scan(path[0]);
+            }
         }
 
 

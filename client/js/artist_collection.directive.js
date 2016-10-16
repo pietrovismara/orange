@@ -11,6 +11,8 @@
 
             init();
 
+            $scope.$watch('tracks', init);
+
             function init() {
                 vm.artist = $scope.artist;
                 vm.tracks = $scope.tracks;
