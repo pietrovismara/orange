@@ -85,10 +85,7 @@
         }
 
         function scan(path, recursive) {
-            scanner.scan(path, recursive)
-            .then(() => {
-                console.log('scan complete');
-            });
+            scanner.scan(path, recursive);            
         }
 
         function scanDir() {

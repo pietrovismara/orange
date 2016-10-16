@@ -78,7 +78,6 @@ function musicPlayerDirective(audioPlayer) {
         }
 
         function addToPlaylist(track) {
-            console.log('addToPlaylist', track);
             vm.playlist.push(track);
             if (!vm.playingTrack) {
                 vm.playingTrack = vm.playlist[vm.playingIndex];

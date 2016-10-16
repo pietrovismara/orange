@@ -10,7 +10,6 @@
 
             function init() {
                 vm.track = $scope.data;
-                console.log(vm.track);
             }
         };
 
