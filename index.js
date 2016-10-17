@@ -6,7 +6,6 @@ const BrowserWindow = electron.BrowserWindow;
 // Module to communicate with renderer.
 const ipcMain = electron.ipcMain;
 const basePath = require('base-path');
-const db = require(`${basePath()}/lib/db`);
 const audioserver = require(`${basePath()}/lib/audioserver`);
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -37,14 +36,8 @@ function createWindow() {
 }
 
 function init () {
-    db.init()
-    .then(() => {
-        audioserver.listen();
-        createWindow();
-    })
-    .catch((err) => {
-        throw err;
-    });
+    audioserver.listen();
+    createWindow();
 }
 
 // This method will be called when Electron has finished
