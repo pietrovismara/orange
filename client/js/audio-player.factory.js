@@ -9,7 +9,9 @@
             stop: stop,
             pause: pause,
             addToPlaylist: addToPlaylist,
-            isPlaying: isPlaying
+            isPlaying: isPlaying,
+            getVolume: getVolume,
+            setVolume: setVolume
         };
         var emitter = new EventEmitter();
         _.assignIn(factory, emitter);
@@ -22,7 +24,9 @@
         function play(path) {
             stop();
             player = AV.Player.fromURL(`http://127.0.0.1:9000/?path=${path}`);
+            player.currentTime = 25000;
             player.play();
+            console.log('player', player);
         }
 
         function stop() {
@@ -34,6 +38,18 @@
         function pause() {
             if (isPlaying()) {
                 player.pause();
+            }
+        }
+
+        function getVolume() {
+            if (player) {
+                return player.volume;
+            }
+        }
+
+        function setVolume(level) {
+            if (player) {
+                player.volume = level;
             }
         }
 

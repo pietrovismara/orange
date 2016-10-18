@@ -1,0 +1,5 @@
+<span class="md-subhead">
+    <span ng-repeat="artist in vm.track.artist" ng-if="$index === 0">{{artist}}</span>
+    <span ng-repeat="artist in vm.track.artist" ng-if="$index > 0">,{{artist}}</span>
+    - {{vm.track.title}}
+</span>

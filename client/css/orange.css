@@ -1,0 +1,78 @@
+body {
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.nav-header {
+  /*background-color: #106CC8;
+  background: linear-gradient(#f99b02, #db8700);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f99b02), color-stop(1, #106cc8));
+  background: -webkit-linear-gradient(top, #f99b02 0%, #274b66 100%);
+  background: -moz-linear-gradient(top, #f99b02 0%, #106cc8 100%);
+  background: linear-gradient(top, #f99b02 0%, #106cc8 100%);*/
+  border-bottom: 1px solid #267ED5;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+a.orange-logo {
+  border-bottom: none;
+}
+
+.orange-logotype {
+  color: black;
+  text-align: center;
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.orange-logo {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 0 0 16px;
+  margin: 0 auto;
+}
+
+.orange-logo:focus {
+  outline: none;
+}
+
+.orange-logo > img {
+  height: 150px;
+  width: auto;
+  display: block;
+  transform-origin: 50% 0;
+  transform: scale(1.2);
+}
+
+.site-sidenav {
+  /*background: #106CC8;*/
+}
+
+.site-sidenav md-content {
+  background: transparent;
+}
+
+.site-sidenav,
+.site-sidenav.md-locked-open-add-active,
+.site-sidenav.md-locked-open {
+  width:     272px;
+  min-width: 272px;
+  max-width: 272px;
+}
+
+.site-sidenav > * {
+  min-width: 218px;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 400;
+  -webkit-transition: border-bottom 0.35s;
+  -moz-transition: border-bottom 0.35s;
+  -ms-transition: border-bottom 0.35s;
+  -o-transition: border-bottom 0.35s;
+  transition: border-bottom 0.35s;
+}

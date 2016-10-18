@@ -1,7 +1,7 @@
 <div ng-if="vm.track" class="md-list-item-text" layout="column">
-    <p>
+    <h6 class="md-subhead">
         <span ng-repeat="artist in vm.track.artist" ng-if="$index === 0">{{artist}}</span>
         <span ng-repeat="artist in vm.track.artist" ng-if="$index > 0">,{{artist}}</span>
         - {{vm.track.title}}
-    </p>
+    </h6>
 </div>

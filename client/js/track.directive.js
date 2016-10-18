@@ -1,24 +1,37 @@
 (function() {
     angular.module('orange')
-    .directive('track', trackDirective);
+    .directive('track', trackDirective)
+    .directive('playerTrack', playerTrackDirective);
 
-    function trackDirective() {
-        var ctrl = function($scope, $element, $attrs) {
-            var vm = this;
+    function sharedController($scope, $element, $attrs) {
+        var vm = this;
 
-            $scope.$watch('data', init);
-            init();
-            function init() {
-                vm.track = $scope.data;
-            }
-        };
+        $scope.$watch('data', init);
+        init();
+        function init() {
+            vm.track = $scope.data;
+        }
+    };
 
+    function playerTrackDirective() {
         return {
             restrict: 'E',
             scope: {
                 data: '='
             },
-            controller: ctrl,
+            controller: sharedController,
+            controllerAs: 'vm',
+            templateUrl: 'client/partials/player-track.html'
+        };
+    }
+
+    function trackDirective() {
+        return {
+            restrict: 'E',
+            scope: {
+                data: '='
+            },
+            controller: sharedController,
             controllerAs: 'vm',
             templateUrl: 'client/partials/track.html'
         };

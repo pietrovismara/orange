@@ -4,57 +4,65 @@
     <meta charset="UTF-8">
     <title>Music Scanner</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="./node_modules/angular-material/angular-material.css">
     <link rel="stylesheet" href="./node_modules/md-data-table/dist/md-data-table-style.css">
-    <style>
-        #vertical-container {
-            height: 350px;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="./client/css/orange.css">
 </head>
 
-<body ng-app="orange" ng-cloak style="display: flex; flex-direction: column;">
-    <md-toolbar ng-controller="ScannerController as vm" class="md-toolbar-tools">
-        <div class="md-toolbar-tools">
-            <h5>
-                <span>
-                    <span ng-if="vm.scanning">Loading...</span>
-                    <span ng-if="!vm.scanning">Ready</span>
-                </span>
-            </h5>
-            <span flex></span>
-            <h2>
-                <span>Tracks: {{vm.collectionSize}}</span>
-            </h2>
-            <span flex></span>
-            <md-menu>
-                <md-button class="md-raised md-accent" ng-click="$mdOpenMenu($event)">
-                    Scanner
-                </md-button>
-                <md-menu-content width="4">
-                    <md-menu-item>
-                        <md-button ng-disabled="vm.scanning" class="md-raised" ng-click="vm.scanFile()">File</md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button ng-disabled="vm.scanning" class="md-raised" ng-click="vm.scanDir()">Directory</md-button>
-                    </md-menu-item>
-                    <md-menu-divider></md-menu-divider>
-                    <md-menu-item>
-                        <md-button ng-disabled="vm.scanning" class="md-raised" ng-click="vm.scanDirRec()">Recursive Directory</md-button>
-                    </md-menu-item>
-                </md-menu-content>
-            </md-menu>
+<body ng-app="orange" ng-cloak layout="row">
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" md-component-id="left" hide-print md-is-locked-open="$mdMedia('gt-sm')" style="overflow-y: auto;">
+        <header class="nav-header">
+            <a ng-href="" class="orange-logo">
+                <img src="client/img/icons/angular-logo.svg" alt="" />
+                <h1 class="orange-logotype md-heading">Orange</h1>
+            </a>
+        </header>
+        <md-content flex role="navigation">
+            <collection></collection>
         </div>
-    </md-toolbar>
-    <md-content flex layout="row">
-        <collection></collection>
-        <md-content flex layout="column">
-            <metadata-editor></metadata-editor>
-            <span flex></span>
-            <music-player></music-player>
-        </md-content>
-    </md-content>
+    </md-sidenav>
+    <div flex layout="column">
+        <md-toolbar ng-controller="ScannerController as vm" class="md-toolbar-tools">
+            <div class="md-toolbar-tools">
+                <h5>
+                    <span>
+                        <span ng-if="vm.scanning">Loading...</span>
+                        <span ng-if="!vm.scanning">Ready</span>
+                    </span>
+                </h5>
+                <span flex></span>
+                <h2>
+                    <span>Tracks: {{vm.collectionSize}}</span>
+                </h2>
+                <span flex></span>
+                <md-menu>
+                    <md-button class="md-raised md-accent" ng-click="$mdOpenMenu($event)">
+                        Scanner
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button ng-disabled="vm.scanning" class="md-raised" ng-click="vm.scanFile()">File</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-disabled="vm.scanning" class="md-raised" ng-click="vm.scanDir()">Directory</md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button ng-disabled="vm.scanning" class="md-raised" ng-click="vm.scanDirRec()">Recursive Directory</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+        <metadata-editor></metadata-editor>
+        <span flex></span>
+        <music-player></music-player>
+    </div>
+
+
+
+
     <script src="./client/js/aurora.js"></script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/eventemitter3/index.js"></script>

@@ -23,8 +23,9 @@ angular.module('orange', ['ngMaterial', 'mdDataTable', 'ngMdIcons', 'ngSanitize'
 })
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryPalette('orange')
-    .accentPalette('deep-orange');
+    .primaryPalette('blue-grey')
+    .accentPalette('blue-grey')
+    .dark();
 });
 
 })();

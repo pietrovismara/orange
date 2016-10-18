@@ -22,6 +22,8 @@ function musicPlayerDirective(audioPlayer) {
         vm.next = next;
         vm.canPrev = canPrev;
         vm.canNext = canNext;
+        vm.volume = audioPlayer.getVolume() || 50;
+        vm.setVolume = audioPlayer.setVolume;
         vm.isPlaying = audioPlayer.isPlaying;
 
         init();
@@ -45,6 +47,7 @@ function musicPlayerDirective(audioPlayer) {
         function play() {
             vm.playingTrack = vm.playlist[vm.playingIndex];
             audioPlayer.play(vm.playingTrack.path);
+            audioPlayer.setVolume(vm.volume);
         }
 
         function stop() {
