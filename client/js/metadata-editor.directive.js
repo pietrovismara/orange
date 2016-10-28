@@ -2,7 +2,7 @@
     angular.module('orange')
     .directive('metadataEditor', metadataEditorDirective);
 
-    function metadataEditorDirective(collection) {
+    function metadataEditorDirective($mdToast, collection) {
         return {
             restrict: 'E',
             controller: controller,
@@ -34,13 +34,22 @@
             }
 
             function save(metadata) {
-                console.log("save", metadata);
                 collection.update(metadata, metadata.artist, metadata.genres)
-                .then((res) => {
-                    console.log("saved", res);
+                .then(() => {
+                    $mdToast.show(
+                        $mdToast.simple()
+                        .textContent('Track updated!')
+                        .position('top right')
+                        .hideDelay(2000)
+                    );
                 })
                 .catch((err) => {
-                    console.log(err);
+                    $mdToast.show(
+                        $mdToast.simple()
+                        .textContent(`Error: ${err}`)
+                        .position('top right')
+                        .hideDelay(2000)
+                    );
                 });
             }
 
