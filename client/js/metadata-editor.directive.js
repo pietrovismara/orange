@@ -12,7 +12,8 @@
 
         function controller($scope) {
             var vm = this;
-            vm.editedMetadata = {};
+            vm.save = save;
+            vm.metadata = {};
 
             init();
 
@@ -32,22 +33,23 @@
                 collection.removeListeners('metadata.edit', onMetadataEdit);
             }
 
-            function saveRow(row) {
-                console.log(row);
+            function save(metadata) {
+                console.log("save", metadata);
+                collection.update(metadata, metadata.artist, metadata.genres)
+                .then((res) => {
+                    console.log("saved", res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
             }
 
             function onMetadataEdit(metadata) {
                 console.log('onMetadtaEdit', metadata);
-                // $scope.$digest();
-                vm.editedMetadata = metadata;
-                // let temp = "";
-                // _.forEach(vm.editedMetadata.artist, (artist, i) => {
-                //     temp += `${artist}`;
-                //     if (i < vm.editedMetadata.artist.length - 1) {
-                //         temp += `,`;
-                //     }
-                // });
-                // $scope.$digest();
+                vm.metadata = _.clone(metadata);
+                vm.metadata.rating = vm.metadata.rating || 0;
+                vm.metadata.bpm = vm.metadata.bpm || 0;
+                $scope.$digest();
             }
 
         }

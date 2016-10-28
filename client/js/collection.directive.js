@@ -44,14 +44,15 @@ function collectionDirective(superFilter, collection, scanner) {
             scanner.on('scan.complete', onScanComplete);
             scanner.on('scan.data', onScanData);
             scanner.on('scan.start', onScanStart);
+            collection.on('metadata.refresh', onScanData);
         }
 
         function removeListeners() {
             scanner.removeListeners('scan.complete', onScanComplete);
             scanner.removeListeners('scan.data', onScanData);
             scanner.removeListeners('scan.start', onScanStart);
+            collection.removeListeners('metadata.refresh', onScanData);
         }
-
 
         function onScanData() {
             vm.collection = collection.getCollection();
