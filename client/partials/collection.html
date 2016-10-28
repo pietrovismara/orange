@@ -1,8 +1,16 @@
-<div>
+<div layout-padding>
     <md-input-container style="max-width: 95%;">
         <label>Search</label>
-        <input type="text" ng-model="ctrl.searchKey" ng-model-options="{debounce: 250}" ng-change="ctrl.searchBy()"></input>
+        <input type="text" ng-model="ctrl.searchKey" ng-model-options="{debounce: 250}" ng-change="ctrl.searchBy(ctrl.searchKey)"></input>
     </md-input-container>
+    <md-divider></md-divider>
+    <md-radio-group ng-model="ctrl.groupByKey" ng-change="ctrl.groupBy(ctrl.groupByKey)">
+        <h6 class="md-subhead">Group By</h6>
+        <md-radio-button value="artist" class="md-primary">Artist</md-radio-button>
+        <md-radio-button value="genres">Genre</md-radio-button>
+        <md-radio-button value="rating">Rating</md-radio-button>
+    </md-radio-group>
+    <md-divider></md-divider>
     <md-content layout-padding>
         <artist-collection ng-repeat="(artist, tracks) in ctrl.collection" artist="artist" tracks="tracks"></artist-collection>
     </md-content>

@@ -20,6 +20,7 @@ function collectionDirective(superFilter, collection, scanner) {
         };
 
         vm.searchKey = "";
+        vm.groupByKey = "artist";
         vm.groupBy = groupBy;
         vm.searchBy = searchBy;
         vm.filter = filter;
@@ -72,26 +73,26 @@ function collectionDirective(superFilter, collection, scanner) {
             onScanData();
         }
 
-        function searchBy() {
-            if (!vm.searchKey) {
-                superFilter.searchBy(null);
-            } else {
+        function searchBy(searchKey) {
+            if (searchKey) {
                 superFilter.searchBy((track) => {
-                    if (track.title.toLowerCase().indexOf(vm.searchKey.toLowerCase()) !== -1) {
+                    if (track.title.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1) {
                         return true;
                     }
 
                     return _.some(track.artist, (artist) => {
-                        return artist.toLowerCase().indexOf(vm.searchKey.toLowerCase()) !== -1;
+                        return artist.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1;
                     });
                 });
+            } else {
+                superFilter.searchBy(null);
             }
 
             filter();
         }
 
-        function groupBy(type) {
-            superFilter.groupBy(type);
+        function groupBy(groupByKey) {
+            superFilter.groupBy(groupByKey);
             filter();
         }
 
