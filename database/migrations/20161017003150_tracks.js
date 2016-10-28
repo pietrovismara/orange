@@ -64,5 +64,6 @@ function createTracksTable(schema) {
         table.string('mood');
         table.string('path').unique();
         table.string('format');
+        table.integer('duration');
     });
 }
