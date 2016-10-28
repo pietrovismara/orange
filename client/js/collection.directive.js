@@ -58,7 +58,7 @@ function collectionDirective(superFilter, collection, scanner) {
         function onScanData() {
             vm.collection = collection.getCollection();
             vm.collectionSize = collection.size();
-            groupBy('artist');
+            groupBy(vm.groupByKey);
             filter();
             $scope.$digest();
         }
